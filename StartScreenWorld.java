@@ -15,6 +15,7 @@ public class StartScreenWorld extends World
     Button start = new Button(300,200,"Start-Button.png",300, 250);
     Button learn = new Button(150,200,"Learn.png");
     Button play = new Button(450,200, "Play.png");
+    
     /**
      * Constructor for objects of class StartScreenWorld.
      * 
