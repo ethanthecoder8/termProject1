@@ -6,18 +6,21 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Shapes extends Actor
+public class Shape extends Actor
 {
     int x;
     int y;
     private World world = getWorld();
     
-    public Shapes(String img){
+    public Shape(){
+        
+    }
+    public Shape(String img){
         x = world.getWidth()/2;
         y = world.getHeight()/2;
         setImage(img);
     }
-    public Shapes(int x, int y, String img){
+    public Shape(int x, int y, String img){
         this.x = x;
         this.y = y;
         setImage(img);
