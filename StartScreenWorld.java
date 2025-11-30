@@ -45,6 +45,10 @@ public class StartScreenWorld extends World
             stage = Stage.PLAY;
         }
     }
+    public Stage getStage(){
+        return this.stage;
+    }
+    
     
     
     public void act(){
@@ -53,7 +57,11 @@ public class StartScreenWorld extends World
             addObject(learn,learn.getX(), learn.getY());
             addObject(play,play.getX(), play.getY());
         }
-        
-        
+        if(stage == Stage.LEARN){
+            
+        }
+        if(stage == Stage.PLAY){
+            
+        }
     }
 }

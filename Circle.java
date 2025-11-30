@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Circle extends Shapes
+public class Circle extends Shape
 {
     private int x;
     private int y;
@@ -24,7 +24,7 @@ public class Circle extends Shapes
     public Circle(int x, int y, String img){
         this.x = x;
         this.y = y;
-        setImage("img");
+        setImage(img);
     }
     /**
      * Act - do whatever the Circle wants to do. This method is called whenever
