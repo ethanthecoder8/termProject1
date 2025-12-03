@@ -55,8 +55,8 @@ public class StartScreenWorld extends World
     public void act(){
         changeStage();
         if(stage == Stage.MENU){
-            addObject(learn,learn.getX(), learn.getY());
-            addObject(play,play.getX(), play.getY());
+            //addObject(learn,learn.getX(), learn.getY());
+            //addObject(play,play.getX(), play.getY());
         }
         if(stage == Stage.LEARN){
             
