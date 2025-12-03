@@ -7,13 +7,20 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @version (a version number or a date)
  */
 public class Shape extends Actor
+
 {
-    int x;
-    int y;
-    private World world = getWorld();
+    protected int x;
+    protected int y;
+    protected String img;
+    protected World world = getWorld();
+    protected GreenfootImage image = getImage();
+    protected enum Size{
+        SMALL, MEDIUM, LARGE
+    }
     
     public Shape(){
-        
+        x = world.getWidth()/2;
+        y = world.getHeight()/2;
     }
     public Shape(String img){
         x = world.getWidth()/2;
@@ -24,6 +31,29 @@ public class Shape extends Actor
         this.x = x;
         this.y = y;
         setImage(img);
+    }
+    
+    public int getX(){
+        return x;
+    }
+    public int getY(){
+        return y;
+    }
+    
+    public void setLocation(int x, int y){
+        this.x = x;
+        this.y = y;
+    }
+    public void setSize(Size size){
+        //GreenfootImage image = getImage();
+        if(size==Size.SMALL){
+            image.scale(100,100);
+        } else if(size==Size.MEDIUM){
+            image.scale(150,150);
+        } else if(size==Size.LARGE){
+            image.scale(200,200);
+        }
+        setImage(image);
     }
     
     /**
