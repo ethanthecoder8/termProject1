@@ -12,8 +12,11 @@ public class Shape extends Actor
     protected int x;
     protected int y;
     protected String img;
+    private String color;
     protected World world = getWorld();
     protected GreenfootImage image = getImage();
+    
+    
     protected enum Size{
         SMALL, MEDIUM, LARGE
     }
@@ -22,7 +25,7 @@ public class Shape extends Actor
         x = world.getWidth()/2;
         y = world.getHeight()/2;
     }
-    public Shape(String img){
+    public Shape(String color, String shape){
         x = world.getWidth()/2;
         y = world.getHeight()/2;
         setImage(img);
@@ -45,7 +48,6 @@ public class Shape extends Actor
         this.y = y;
     }
     public void setSize(Size size){
-        //GreenfootImage image = getImage();
         if(size==Size.SMALL){
             image.scale(100,100);
         } else if(size==Size.MEDIUM){
