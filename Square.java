@@ -8,6 +8,18 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Square extends Shape
 {
+    private static final String TYPE = "Square";
+    
+    public Square(){
+        super(TYPE);
+    }
+    public Square(int x, int y){
+       super(x,y,"White",TYPE);
+    }
+    public Square(int x, int y, String color){
+        super(color,TYPE);
+    }
+    
     /**
      * Act - do whatever the Square wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.

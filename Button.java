@@ -10,7 +10,7 @@ public class Button extends Actor
 {
     private int x;
     private int y;
-    private int length;
+    private int height;
     private int width;
     
     /**
@@ -31,15 +31,15 @@ public class Button extends Actor
      * @param x the desired x position of the object
      * @param y the desired y position of the object
      * @param img the desired image for the object 
-     * @param l the desired length of the object 
+     * @param h the desired height of the object 
      * @param w the desired width of the object 
      */
-    public Button(int x, int y, String img, int l, int w){
+    public Button(int x, int y, String img, int w, int h){
         this.x = x; 
         this.y = y;
         setImage(img);
         GreenfootImage image = getImage();
-        image.scale(l,w);
+        image.scale(w,h);
         setImage(image);
     }
     

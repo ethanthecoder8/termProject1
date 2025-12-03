@@ -13,28 +13,94 @@ public class Shape extends Actor
     protected int y;
     protected String img;
     private String color;
+    private String name;
     protected World world = getWorld();
     protected GreenfootImage image = getImage();
-    
+    private int width;
+    private int height;
+    protected Size size = Size.MEDIUM;
+    //private int shapeRotation = 0;
     
     protected enum Size{
         SMALL, MEDIUM, LARGE
     }
+    // Available shapes
+    //    CIRCLE, SQUARE, TRIANGLE, STAR, RECTANGLE, DIAMOND
     
-    public Shape(){
+    //  Available colors
+    //  BLACK, WHITE, PINK, BROWN, PURPLE, RED, ORANGE, YELLOW, BLUE, GREEN
+    
+    
+    
+    public Shape(String name){
+        if (world != null){
+            x = world.getWidth()/2;
+            y = world.getHeight()/2;
+        }
+        this.name = name;
+        color = "White";
+        shapeId();
+        
+        width = image.getWidth();
+        height = image.getHeight();
+    }
+    public Shape(String color, String name){
         x = world.getWidth()/2;
         y = world.getHeight()/2;
+        this.name = name;
+        this.color = color;
+        shapeId();
+        
+        width = image.getWidth();
+        height = image.getHeight();
     }
-    public Shape(String color, String shape){
-        x = world.getWidth()/2;
-        y = world.getHeight()/2;
-        setImage(img);
-    }
-    public Shape(int x, int y, String img){
+    public Shape(int x, int y, String color, String name){
         this.x = x;
         this.y = y;
-        setImage(img);
+        this.name = name;
+        this.color = color;
+        shapeId();
+        
+        width = image.getWidth();
+        height = image.getHeight();
     }
+    
+    private String shapeId(){
+        img = color+"-"+name+".png";
+        setImage(img);
+        return img;
+    }
+    /**
+     * If the shape is pressed, this removes it from the world
+     * 
+     * @param w the world to remove the shape from 
+     */
+    public void removePressed(World w){
+        if(Greenfoot.mousePressed(this)){
+            w.removeObject(this);
+        }
+    }
+    /**
+     * Determines whether the shape is pressed
+     * 
+     * @return boolean returns true if the shape is pressed
+     */
+    public boolean pressed(){
+        boolean result = false;
+        if(Greenfoot.mousePressed(this)){
+            result = true;
+        }
+        return result;
+    }
+    /**
+     * This removes the shape from the world
+     * 
+     * @param w the world to remove the shape from 
+     */
+    public void remove(World w){
+        w.removeObject(this);
+    }
+    
     
     public int getX(){
         return x;
@@ -43,23 +109,32 @@ public class Shape extends Actor
         return y;
     }
     
+    public void setColor(String color){
+        this.color = color;
+        shapeId();
+    }
     public void setLocation(int x, int y){
         this.x = x;
         this.y = y;
     }
-    public void setSize(Size size){
-        if(size==Size.SMALL){
-            image.scale(100,100);
-        } else if(size==Size.MEDIUM){
-            image.scale(150,150);
-        } else if(size==Size.LARGE){
-            image.scale(200,200);
+    public void setSize(String s){
+        if(s != null && (s.equals("small") || s.equals("Small"))){
+            size = Size.SMALL;
+            image.scale(width/2,height/2);
+        } else if(s != null && (s.equals("medium") || s.equals("Medium"))){
+            size = Size.MEDIUM;
+            image.scale(width,height);
+        } else if(s != null && (s.equals("large") || s.equals("Large"))){
+            size = Size.LARGE;
+            image.scale(width*2,height*2);
         }
         setImage(image);
     }
     
+    
+    
     /**
-     * Act - do whatever the Shapes wants to do. This method is called whenever
+     * Act - do whatever the Shape wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act()
