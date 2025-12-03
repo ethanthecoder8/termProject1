@@ -16,7 +16,7 @@ public class Learning extends World
     Star star1 = new Star();
     Rectangle rectangle1 = new Rectangle();
     Diamond diamond1 = new Diamond();
-    
+    Shape[] startShapes = {circle1,square1,triangle1,star1,rectangle1,diamond1};
     private int shapeRotation;
     
     /**
@@ -37,18 +37,30 @@ public class Learning extends World
     }
     
     private void spotlight(Shape s){
-        s.setLocation(width/2, height/2);
-        s.setSize("Large");
-        
+        if (s != null){
+            s.setLocation(width/2, (height/2)+40);
+            s.setSize("Large");
+            for(Shape check : startShapes){
+                if (check != s){
+                    removeObject(check);
+                }
+            }
+        }
     }
     private void rotate(){
         
     }
-    private Shape choosenShape(){
-        for (circle1.isPressed){
+    private Shape chosenShape(){
+        Shape temp = null;    
+            for (Shape s : startShapes){
+                if (s.pressed()){
+                    temp = s;
+                }
+            }
+        return temp;
     }
     
     public void act(){
-        
+        spotlight(chosenShape());
     }
 }
