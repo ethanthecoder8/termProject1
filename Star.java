@@ -8,6 +8,18 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Star extends Shape
 {
+    private static final String TYPE = "Star";
+    
+    public Star(){
+        super(TYPE);
+    }
+    public Star(int x, int y){
+       super(x,y,"White",TYPE);
+    }
+    public Star(int x, int y, String color){
+        super(color,TYPE);
+    }
+    
     /**
      * Act - do whatever the Star wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.

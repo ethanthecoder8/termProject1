@@ -8,14 +8,16 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Rectangle extends Shape
 {
+    private static final String TYPE = "Rectangle";
+    
     public Rectangle(){
-        super("White-Rectangle.png");
+        super(TYPE);
     }
     public Rectangle(int x, int y){
-        super(x,y,"White-Rectangle.png");
+       super(x,y,"White",TYPE);
     }
-    public Rectangle(int x, int y, String img){
-        super(x,y,img);
+    public Rectangle(int x, int y, String color){
+        super(color,TYPE);
     }
     
     /**
@@ -25,6 +27,6 @@ public class Rectangle extends Shape
     public void act()
     {
         // Add your action code here.
-        setSize(Size.LARGE);
+        
     }
 }
