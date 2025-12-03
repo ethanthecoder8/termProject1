@@ -15,7 +15,6 @@ public class Shape extends Actor
     private String color;
     private String name;
     protected World world = getWorld();
-    protected GreenfootImage image = getImage();
     private int width;
     private int height;
     protected Size size = Size.MEDIUM;
@@ -33,6 +32,7 @@ public class Shape extends Actor
     
     
     public Shape(String name){
+        //GreenfootImage image = getImage();
         if (world != null){
             x = world.getWidth()/2;
             y = world.getHeight()/2;
@@ -40,7 +40,7 @@ public class Shape extends Actor
         this.name = name;
         color = "White";
         shapeId();
-        
+        GreenfootImage image = getImage();
         width = image.getWidth();
         height = image.getHeight();
     }
@@ -50,7 +50,7 @@ public class Shape extends Actor
         this.name = name;
         this.color = color;
         shapeId();
-        
+        GreenfootImage image = getImage();
         width = image.getWidth();
         height = image.getHeight();
     }
@@ -61,14 +61,16 @@ public class Shape extends Actor
         this.color = color;
         shapeId();
         
+        
+        GreenfootImage image = getImage();
         width = image.getWidth();
         height = image.getHeight();
     }
     
-    private String shapeId(){
+    private void shapeId(){
         img = color+"-"+name+".png";
         setImage(img);
-        return img;
+        
     }
     /**
      * If the shape is pressed, this removes it from the world
@@ -113,20 +115,18 @@ public class Shape extends Actor
         this.color = color;
         shapeId();
     }
-    public void setLocation(int x, int y){
-        this.x = x;
-        this.y = y;
-    }
+    
     public void setSize(String s){
-        if(s != null && (s.equals("small") || s.equals("Small"))){
+        GreenfootImage image = new GreenfootImage(img);
+        if(s != null && s.equalsIgnoreCase("small")){
             size = Size.SMALL;
             image.scale(width/2,height/2);
-        } else if(s != null && (s.equals("medium") || s.equals("Medium"))){
+        } else if(s != null && s.equalsIgnoreCase("medium")){
             size = Size.MEDIUM;
             image.scale(width,height);
-        } else if(s != null && (s.equals("large") || s.equals("Large"))){
+        } else if(s != null && s.equalsIgnoreCase("large")){
             size = Size.LARGE;
-            image.scale(width*2,height*2);
+            image.scale(width*2-5,height*2-5);
         }
         setImage(image);
     }
@@ -140,5 +140,6 @@ public class Shape extends Actor
     public void act()
     {
         // Add your action code here.
+        
     }
 }
