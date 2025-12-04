@@ -77,6 +77,10 @@ public class Shape extends Actor
             playedSound = true;
         }
     }
+    public void playSoundAgain(){
+        playedSound = false;
+        playSound();
+    }
     private void shapeId(){
         img = color+"-"+name+".png";
         setImage(img);

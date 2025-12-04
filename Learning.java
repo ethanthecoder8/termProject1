@@ -22,6 +22,7 @@ public class Learning extends World
     Shape tempHold;
     World startWorld;
     Text word = new Text("",75);
+    Button replay = new Button("Replay.png");
     
     
     /**
@@ -77,6 +78,7 @@ public class Learning extends World
         for(Shape change : startShapes){
                 change.setSize("Medium");
             }
+        removeObject(replay);
     }
     private void spotlight(Shape s){
         if (s != null){
@@ -94,40 +96,65 @@ public class Learning extends World
             resetShapes();
             Shape.playedSound = false;
             word.eraseText();
-        }
+            //removeObject(replay);
+        } 
         if (shapeRotation == 1){
             resetShapes();
             spotlight(circle1);
             circle1.playSound();
-            //addObject(word, 300, 50);
             word.setMessage("Circle");
+            addObject(replay, 525, 60);
+            if (replay.pressed()){
+                circle1.playSoundAgain();
+            }
         }else if (shapeRotation == 2){
             resetShapes();
             spotlight(square1);
             square1.playSound();
             word.setMessage("Square");
+            addObject(replay, 525, 60);
+            if (replay.pressed()){
+                square1.playSoundAgain();
+            }
         }else if (shapeRotation == 3){
             resetShapes();
             spotlight(triangle1);
             triangle1.playSound();
             word.setMessage("Triangle");
+            addObject(replay, 525, 60);
+            if (replay.pressed()){
+                triangle1.playSoundAgain();
+            }
         }else if (shapeRotation == 4){
             resetShapes();
             spotlight(star1);
             star1.playSound();
             word.setMessage("Star");
+            addObject(replay, 525, 60);
+            if (replay.pressed()){
+                star1.playSoundAgain();
+            }
         }else if (shapeRotation == 5){
             resetShapes();
             spotlight(rectangle1);
             rectangle1.playSound();
             word.setMessage("Rectangle");
+            addObject(replay, 525, 60);
+            if (replay.pressed()){
+                rectangle1.playSoundAgain();
+            }
         }else if (shapeRotation == 6){
             resetShapes();
             spotlight(diamond1);
             diamond1.playSound();
             word.setMessage("Diamond");
+            addObject(replay, 525, 60);
+            if (replay.pressed()){
+                diamond1.playSoundAgain();
+            }
         }
         addObject(word, 300, 50);
+        replay.setSize("medium");
     }
     private Shape chosenShape(){
         Shape temp = null;    

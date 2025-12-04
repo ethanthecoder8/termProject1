@@ -23,8 +23,16 @@ public class Button extends Actor
      * 
      *
      */
-    public Button(){
-        
+    public Button(String img){
+        x = getX(); 
+        y = getY();
+        this.img = img;
+        image = getImage();
+        //hoverImage = image;
+        //hoverImage.scale(image.getWidth()+5,image.getHeight()+5);
+        setImage(img);
+        width = image.getWidth();
+        height = image.getHeight();
     }
     /**
      * Creates a Button object
@@ -38,8 +46,8 @@ public class Button extends Actor
         this.y = y;
         this.img = img;
         image = getImage();
-        hoverImage = image;
-        hoverImage.scale(image.getWidth()+5,image.getHeight()+5);
+        //hoverImage = image;
+        //hoverImage.scale(image.getWidth()+5,image.getHeight()+5);
         setImage(img);
         width = image.getWidth();
         height = image.getHeight();
@@ -61,8 +69,8 @@ public class Button extends Actor
         width = w;
         setImage(img);
         image = getImage();
-        hoverImage = image;
-        hoverImage.scale(image.getWidth()+5,image.getHeight()+5);
+        //hoverImage = image;
+        //hoverImage.scale(image.getWidth()+5,image.getHeight()+5);
         image.scale(w,h);
         setImage(image);
     }
@@ -104,28 +112,32 @@ public class Button extends Actor
     public int getY(){
         return this.y;
     }
+    public int getWidth(){
+        return width;
+    }
+    public int getHeight(){
+        return height;
+    }
     
-    /**
     private boolean mouseHovering(){
         boolean temp = false;
         m = Greenfoot.getMouseInfo();
-        if (m == null){
-            hovering = false;
-            temp = false;
-        } else {
-            temp = m.getActor() == this;
+        int mouseX = m.getX();
+        int mouseY = m.getY();
+        if(mouseX <= (x + (width/2)) && mouseX >= (x - (width/2)) && 
+            mouseY <= (y + (width/2)) && mouseY >= (y - (width/2))){
+            temp = true;
         }
-         
         return temp;
     }
-    public void hover(){
-        setImage(img);
-        //boolean temp = mouseHovering();
-        image = getImage();
-        if(mouseHovering()){
-            setImage(hoverImage);
-        } else {
-            setImage(image);
+    public void setSize(String s){
+        GreenfootImage image = new GreenfootImage(img);
+        if(s != null && s.equalsIgnoreCase("small")){
+            image.scale(width,height);
+        } else if(s != null && s.equalsIgnoreCase("medium")){
+            image.scale(width*2,height*2);
+        } else if(s != null && s.equalsIgnoreCase("large")){
+            image.scale(width*2-5,height*2-5);
         }
         setImage(image);
     }
@@ -138,6 +150,5 @@ public class Button extends Actor
     public void act()
     {
         // Add your action code here.
-        //hover();
     }
 }
