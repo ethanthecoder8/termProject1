@@ -18,6 +18,7 @@ public class Game extends World
     Button hard = new Button("Hard.png");
     Button colorHard = new Button("Colors.png");
     Back back = new Back();
+    GameMode g = new GameMode("easy");
     
     
     private enum stage{
@@ -89,6 +90,7 @@ public class Game extends World
         if(back.pressed() && stage > 0){
             stage = 0;
             menuVisible(true);
+            g.shapeVisible(false, this);
         }else if (startWorld !=null && back.pressed() && stage == 0 ){
             Greenfoot.setWorld(startWorld);
         }
@@ -96,12 +98,15 @@ public class Game extends World
         if (chosenLevel() == easy){
             menuVisible(false);
             stage = 1;
+            g.easy(this);
         } else if (chosenLevel() == medium){
             menuVisible(false);
             stage = 2;
+            g.medium(this);
         } else if (chosenLevel() == hard){
             menuVisible(false);
             stage = 3;
+            g.hard(this);
         } else if (chosenLevel() == colorHard){
             menuVisible(false);
             stage = 4;

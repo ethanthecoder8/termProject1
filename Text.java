@@ -10,15 +10,23 @@ public class Text extends Actor
 {
     private String message;
     private int fontSize;
+    Color color;
     
     public Text(String m, int f){
         message = m;
         fontSize = f;
+        color = Color.YELLOW;
+        update();
+    }
+    public Text(String m, int f, Color color){
+        message = m;
+        fontSize = f;
+        this.color = color;
         update();
     }
     
     private void update(){
-        GreenfootImage image = new GreenfootImage(message,fontSize,Color.YELLOW,new Color(0,0,0,0));
+        GreenfootImage image = new GreenfootImage(message,fontSize,color,new Color(0,0,0,0));
         setImage(image);
     }
     public void setMessage(String m){
