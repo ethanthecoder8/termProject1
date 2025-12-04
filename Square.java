@@ -11,13 +11,13 @@ public class Square extends Shape
     private static final String TYPE = "Square";
     
     public Square(){
-        super(TYPE);
+        super(TYPE, "Square.wav");
     }
     public Square(int x, int y){
-       super(x,y,"White",TYPE);
+       super(x,y,"White",TYPE, "Square.wav");
     }
     public Square(int x, int y, String color){
-        super(color,TYPE);
+        super(color,TYPE, "Square.wav");
     }
     
     /**

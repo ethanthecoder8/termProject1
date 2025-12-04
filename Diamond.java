@@ -11,13 +11,13 @@ public class Diamond extends Shape
     private static final String TYPE = "Diamond";
     
     public Diamond(){
-        super(TYPE);
+        super(TYPE, "Diamond.wav");
     }
     public Diamond(int x, int y){
-       super(x,y,"White",TYPE);
+       super(x,y,"White",TYPE, "Diamond.wav");
     }
     public Diamond(int x, int y, String color){
-        super(color,TYPE);
+        super(color,TYPE, "Diamond.wav");
     }
     
     /**

@@ -11,13 +11,13 @@ public class Triangle extends Shape
     private static final String TYPE = "Triangle";
     
     public Triangle(){
-        super(TYPE);
+        super(TYPE, "Triangle.wav");
     }
     public Triangle(int x, int y){
-       super(x,y,"White",TYPE);
+       super(x,y,"White",TYPE, "Triangle.wav");
     }
     public Triangle(int x, int y, String color){
-        super(color,TYPE);
+        super(color,TYPE, "Triangle.wav");
     }
     
     /**

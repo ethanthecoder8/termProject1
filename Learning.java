@@ -21,6 +21,7 @@ public class Learning extends World
     Back back = new Back();
     Shape tempHold;
     World startWorld;
+    Text word = new Text("",75);
     
     
     /**
@@ -91,26 +92,42 @@ public class Learning extends World
     private void rotate(){
         if(shapeRotation==0){
             resetShapes();
+            Shape.playedSound = false;
+            word.eraseText();
         }
         if (shapeRotation == 1){
             resetShapes();
             spotlight(circle1);
+            circle1.playSound();
+            //addObject(word, 300, 50);
+            word.setMessage("Circle");
         }else if (shapeRotation == 2){
             resetShapes();
             spotlight(square1);
+            square1.playSound();
+            word.setMessage("Square");
         }else if (shapeRotation == 3){
             resetShapes();
             spotlight(triangle1);
+            triangle1.playSound();
+            word.setMessage("Triangle");
         }else if (shapeRotation == 4){
             resetShapes();
             spotlight(star1);
+            star1.playSound();
+            word.setMessage("Star");
         }else if (shapeRotation == 5){
             resetShapes();
             spotlight(rectangle1);
+            rectangle1.playSound();
+            word.setMessage("Rectangle");
         }else if (shapeRotation == 6){
             resetShapes();
             spotlight(diamond1);
+            diamond1.playSound();
+            word.setMessage("Diamond");
         }
+        addObject(word, 300, 50);
     }
     private Shape chosenShape(){
         Shape temp = null;    
