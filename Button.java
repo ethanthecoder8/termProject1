@@ -12,6 +12,11 @@ public class Button extends Actor
     private int y;
     private int height;
     private int width;
+    private String img;
+    private GreenfootImage image;
+    private GreenfootImage hoverImage;
+    private boolean hovering = false;
+    private MouseInfo m = Greenfoot.getMouseInfo();
     
     /**
      * Empty Button constructor
@@ -31,7 +36,13 @@ public class Button extends Actor
     public Button(int x, int y, String img){
         this.x = x; 
         this.y = y;
+        this.img = img;
+        image = getImage();
+        hoverImage = image;
+        hoverImage.scale(image.getWidth()+5,image.getHeight()+5);
         setImage(img);
+        width = image.getWidth();
+        height = image.getHeight();
     }
     /**
      * Creates a Button object
@@ -45,8 +56,13 @@ public class Button extends Actor
     public Button(int x, int y, String img, int w, int h){
         this.x = x; 
         this.y = y;
+        this.img = img;
+        height = h;
+        width = w;
         setImage(img);
-        GreenfootImage image = getImage();
+        image = getImage();
+        hoverImage = image;
+        hoverImage.scale(image.getWidth()+5,image.getHeight()+5);
         image.scale(w,h);
         setImage(image);
     }
@@ -90,11 +106,38 @@ public class Button extends Actor
     }
     
     /**
+    private boolean mouseHovering(){
+        boolean temp = false;
+        m = Greenfoot.getMouseInfo();
+        if (m == null){
+            hovering = false;
+            temp = false;
+        } else {
+            temp = m.getActor() == this;
+        }
+         
+        return temp;
+    }
+    public void hover(){
+        setImage(img);
+        //boolean temp = mouseHovering();
+        image = getImage();
+        if(mouseHovering()){
+            setImage(hoverImage);
+        } else {
+            setImage(image);
+        }
+        setImage(image);
+    }
+    
+    
+    /**
      * Act - do whatever the Button wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act()
     {
         // Add your action code here.
+        //hover();
     }
 }

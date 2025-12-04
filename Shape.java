@@ -18,7 +18,8 @@ public class Shape extends Actor
     private int width;
     private int height;
     protected Size size = Size.MEDIUM;
-    //private int shapeRotation = 0;
+    protected static boolean playedSound = false;
+    protected GreenfootSound sound;
     
     protected enum Size{
         SMALL, MEDIUM, LARGE
@@ -31,12 +32,13 @@ public class Shape extends Actor
     
     
     
-    public Shape(String name){
+    public Shape(String name, String s){
         //GreenfootImage image = getImage();
         if (world != null){
             x = world.getWidth()/2;
             y = world.getHeight()/2;
         }
+        sound = new GreenfootSound(s);
         this.name = name;
         color = "White";
         shapeId();
@@ -44,9 +46,10 @@ public class Shape extends Actor
         width = image.getWidth();
         height = image.getHeight();
     }
-    public Shape(String color, String name){
+    public Shape(String color, String name, String s){
         x = world.getWidth()/2;
         y = world.getHeight()/2;
+        sound = new GreenfootSound(s);
         this.name = name;
         this.color = color;
         shapeId();
@@ -54,9 +57,10 @@ public class Shape extends Actor
         width = image.getWidth();
         height = image.getHeight();
     }
-    public Shape(int x, int y, String color, String name){
+    public Shape(int x, int y, String color, String name, String s){
         this.x = x;
         this.y = y;
+        sound = new GreenfootSound(s);
         this.name = name;
         this.color = color;
         shapeId();
@@ -67,6 +71,12 @@ public class Shape extends Actor
         height = image.getHeight();
     }
     
+    public void playSound(){
+        if(!playedSound){
+            sound.play();
+            playedSound = true;
+        }
+    }
     private void shapeId(){
         img = color+"-"+name+".png";
         setImage(img);

@@ -11,14 +11,15 @@ public class Circle extends Shape
     private static final String TYPE = "Circle";
     
     public Circle(){
-        super(TYPE);
+        super(TYPE, "Circle.wav");
     }
     public Circle(int x, int y){
-       super(x,y,"White",TYPE);
+       super(x,y,"White",TYPE, "Circle.wav");
     }
     public Circle(int x, int y, String color){
-        super(color,TYPE);
+        super(color,TYPE, "Circle.wav");
     }
+    
     
     /**
      * Act - do whatever the Circle wants to do. This method is called whenever

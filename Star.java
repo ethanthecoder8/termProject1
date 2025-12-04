@@ -11,13 +11,13 @@ public class Star extends Shape
     private static final String TYPE = "Star";
     
     public Star(){
-        super(TYPE);
+        super(TYPE, "Star.wav");
     }
     public Star(int x, int y){
-       super(x,y,"White",TYPE);
+       super(x,y,"White",TYPE, "Star.wav");
     }
     public Star(int x, int y, String color){
-        super(color,TYPE);
+        super(color,TYPE, "Star.wav");
     }
     
     /**

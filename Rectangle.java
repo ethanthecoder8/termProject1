@@ -11,13 +11,13 @@ public class Rectangle extends Shape
     private static final String TYPE = "Rectangle";
     
     public Rectangle(){
-        super(TYPE);
+        super(TYPE, "Rectangle.wav");
     }
     public Rectangle(int x, int y){
-       super(x,y,"White",TYPE);
+       super(x,y,"White",TYPE, "Rectangle.wav");
     }
     public Rectangle(int x, int y, String color){
-        super(color,TYPE);
+        super(color,TYPE, "Rectangle.wav");
     }
     
     /**
