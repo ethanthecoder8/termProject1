@@ -76,8 +76,8 @@ public class Learning extends World
         addObject(diamond1, width-(width/6), height-(height/4));
         diamond1.setLocation(width-(width/6), height-(height/4));
         for(Shape change : startShapes){
-                change.setSize("Medium");
-            }
+            change.setSize("Medium");
+        }
         removeObject(replay);
     }
     private void spotlight(Shape s){

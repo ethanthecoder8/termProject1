@@ -64,7 +64,8 @@ public class StartScreenWorld extends World
             stage = Stage.MENU;
         }
         if(stage == Stage.PLAY){
-            
+            Greenfoot.setWorld(new Game(this));
+            stage = Stage.MENU;
         }
         
     }
