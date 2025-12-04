@@ -60,7 +60,8 @@ public class StartScreenWorld extends World
             addObject(play,play.getX(), play.getY());
         }
         if(stage == Stage.LEARN){
-            
+            Greenfoot.setWorld(new Learning(this));
+            stage = Stage.MENU;
         }
         if(stage == Stage.PLAY){
             

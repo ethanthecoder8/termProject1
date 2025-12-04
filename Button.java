@@ -14,6 +14,14 @@ public class Button extends Actor
     private int width;
     
     /**
+     * Empty Button constructor
+     * 
+     *
+     */
+    public Button(){
+        
+    }
+    /**
      * Creates a Button object
      * 
      * @param x the desired x position of the object 
