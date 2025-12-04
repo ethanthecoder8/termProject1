@@ -18,6 +18,10 @@ public class Learning extends World
     Diamond diamond1 = new Diamond();
     Shape[] startShapes = {circle1,square1,triangle1,star1,rectangle1,diamond1};
     private int shapeRotation;
+    Back back = new Back();
+    Shape tempHold;
+    World startWorld;
+    
     
     /**
      * Constructor for objects of class Learning.
@@ -27,15 +31,52 @@ public class Learning extends World
     {   
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(600, 400, 1); 
-        shapeRotation = 1;
-        addObject(circle1, width/6, height/4);
-        addObject(square1, width/2, height/4);
-        addObject(triangle1, width-(width/6), height/4);
+        shapeRotation = 0;
+        addObject(circle1, width/6, (height/4)+35);
+        addObject(square1, width/2, (height/4)+35);
+        addObject(triangle1, width-(width/6), (height/4)+35);
         addObject(star1, width/6,height-(height/4));
         addObject(rectangle1, width/2, height-(height/4));
         addObject(diamond1, width-(width/6), height-(height/4));
+        addObject(back, 40,40);
+    }
+    /**
+     * Constructor for objects of class Learning.
+     * 
+     * @param w stores the world given
+     */
+    public Learning(World w)
+    {   
+        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
+        super(600, 400, 1); 
+        startWorld = w;
+        shapeRotation = 0;
+        addObject(circle1, width/6, (height/4)+35);
+        addObject(square1, width/2, (height/4)+35);
+        addObject(triangle1, width-(width/6), (height/4)+35);
+        addObject(star1, width/6,height-(height/4));
+        addObject(rectangle1, width/2, height-(height/4));
+        addObject(diamond1, width-(width/6), height-(height/4));
+        addObject(back, 40,40);
     }
     
+    private void resetShapes(){
+        addObject(circle1, width/6, (height/4)+35);
+        circle1.setLocation(width/6, (height/4)+35);
+        addObject(square1, width/2, (height/4)+35);
+        square1.setLocation(width/2, (height/4)+35);
+        addObject(triangle1, width-(width/6), (height/4)+35);
+        triangle1.setLocation(width-(width/6), (height/4)+35);
+        addObject(star1, width/6,height-(height/4));
+        star1.setLocation(width/6,height-(height/4));
+        addObject(rectangle1, width/2, height-(height/4));
+        rectangle1.setLocation(width/2, height-(height/4));
+        addObject(diamond1, width-(width/6), height-(height/4));
+        diamond1.setLocation(width-(width/6), height-(height/4));
+        for(Shape change : startShapes){
+                change.setSize("Medium");
+            }
+    }
     private void spotlight(Shape s){
         if (s != null){
             s.setLocation(width/2, (height/2)+40);
@@ -48,19 +89,54 @@ public class Learning extends World
         }
     }
     private void rotate(){
-        
+        if(shapeRotation==0){
+            resetShapes();
+        }
+        if (shapeRotation == 1){
+            resetShapes();
+            spotlight(circle1);
+        }else if (shapeRotation == 2){
+            resetShapes();
+            spotlight(square1);
+        }else if (shapeRotation == 3){
+            resetShapes();
+            spotlight(triangle1);
+        }else if (shapeRotation == 4){
+            resetShapes();
+            spotlight(star1);
+        }else if (shapeRotation == 5){
+            resetShapes();
+            spotlight(rectangle1);
+        }else if (shapeRotation == 6){
+            resetShapes();
+            spotlight(diamond1);
+        }
     }
     private Shape chosenShape(){
         Shape temp = null;    
-            for (Shape s : startShapes){
-                if (s.pressed()){
-                    temp = s;
-                }
+        for (Shape s : startShapes){
+            if (s.pressed()){
+                temp = s;
             }
+        }
+        for (int i=0; i < startShapes.length; i++){
+            if (startShapes[i]==temp){
+                shapeRotation = i+1;
+            }
+        }
+        tempHold = temp;
         return temp;
     }
     
     public void act(){
         spotlight(chosenShape());
+        //resetShapes();
+        rotate();
+        if(back.pressed() && shapeRotation > 0){
+            shapeRotation = 0;
+            resetShapes();
+        }else if (startWorld !=null && back.pressed() && shapeRotation == 0 ){
+            Greenfoot.setWorld(startWorld);
+        }
     }
 }
